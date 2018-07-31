@@ -1,0 +1,63 @@
+<%="currentPage="+pm.currentPage%><br>
+<%="totalRecord="+pm.totalRecord%><br>
+<%="pageSize="+pm.pageSize%><br>
+<%="totalPage="+pm.totalPage%><br>
+<%="firstPage="+pm.firstPage%><br>
+<%="lastPage="+pm.lastPage%><br>
+<%="curPos="+pm.curPos%><br>
+<%="num="+pm.num%><br>
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+a{text-decoration:none;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+	<table width="100%" border="1px">
+		<thead>
+			<caption>공지 게시판</caption>
+		</thead>
+		<tbody>
+			<tr>	
+				<th width="5%">No</th>
+				<th width="70%">제목</th>
+				<th width="10%">작성자</th>
+				<th width="10%">등록일</th>
+				<th width="5%">조회수</th>
+			</tr>
+			<%for(var i=1;i<=pm.pageSize;i++){%>			
+			<tr align="center">
+				<td><%=pm.num%></td>
+				<td>제목입니다</td>
+				<td>홍길동</td>
+				<td>2018-09-18</td>
+				<td>35</td>
+			</tr>
+			<%pm.num--;%>
+			<%if(pm.num<1)break;%>
+			<%}%>
+			<tr>
+				<td colspan="5" align="center">
+					<%for(var i=pm.firstPage;i<=pm.lastPage;i++){%>
+						<%if(i>pm.totalPage)break;%>
+						<a href="/list?currentPage=<%=i%>">[<%=i%>]</a>
+					<%}%>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5" align="right">
+					<button>등록</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
